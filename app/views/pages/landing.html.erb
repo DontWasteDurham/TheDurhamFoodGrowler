@@ -1,2 +1,4 @@
-<h1>Pages#landing</h1>
-<p>Find me in app/views/pages/landing.html.erb</p>
+<h1>The Durham Food Growler</h1>
+<% if signed_in? %>
+  <div>Welcome back <%= current_user.first_name %> <%= current_user.last_name %> !</div>
+<% end %>
