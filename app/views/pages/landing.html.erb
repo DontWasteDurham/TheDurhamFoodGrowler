@@ -1,4 +1,44 @@
-<h1>The Durham Food Growler</h1>
+<h1>Durham Food Growlers</h1>
+<h2>A pilot program for sustainable food containers in Durham presented by Food
+  FWD and Don’t Waste Durham,  2016</h2>
+
+  <body>
+    <h3>Overview</h3>
+      <p>Bull City Food Growlers is a reusable take-out container program that aims
+         to reduce waste and cost for local restaurants and improve the quality of
+         life for Durhamites.
+      </p>
+        <p>Bull City Food Growlers are durable and long-lasting
+        take-out containers which are 100% reusable. They can be washed and sanitized in commercial dishwashers. They are used in similar sustainable
+        container programs across the country.
+      </p>
+    <h3>How It Works</h3>
+      <p>
+        <ul>
+          <li>Alert participating food establishment that you are a participant in the program</li>
+          <li>Authenticate at pick up</li>
+          <li>Take food home</li>
+          <li>Return container at participating site</li>
+          <li>repeat</li>
+        </ul>
+      </p>
+    <h3>How to Participate</h3>
+      <p>
+        <ul>
+          <li>Become a member by joining annually at $18 per box per year</li>
+          <li>Renews automatically</li>
+          <li>We have special corporate programs</li>
+        </ul>
+      </p>
+
+  </body>
+
 <% if signed_in? %>
-  <div>Welcome back <%= current_user.first_name %> <%= current_user.last_name %> !</div>
+  <div>Welcome back <% current_user.first_name %> <% current_user.last_name %> !</div>
+<% else %>
+  <div> <%= link_to 'New User Sign Up', new_user_registration_path %> |
+        <%= link_to 'User Sign In', new_user_session_path %> |
+        <%= link_to 'New Business Sign Up', new_business_registration_path %> |
+        <%= link_to 'Business Sign In', new_business_session_path %>
+  </div>
 <% end %>
