@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20160714164513) do
     t.string   "last_name"
     t.boolean  "admin",                  default: false
     t.boolean  "business_account",       default: false
-    t.integer  "purchased_boxes"
-    t.integer  "box_status"
+    t.integer  "purchased_boxes",        default: 0
+    t.integer  "box_status",             default: 0
     t.date     "exp_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
