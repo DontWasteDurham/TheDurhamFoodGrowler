@@ -9,16 +9,11 @@
   </head>
 
   <body>
-    <div class="pull-xs-right">
-      <% if user_signed_in? %>
-        <li class="nav-item hidden-md-down">Welcome back <%= current_user.first_name %>!</li>
-        <li class="nav-item"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-      <% else %>
-        <div> <li class="nav-item"><%= link_to 'New User Sign Up', new_user_registration_path %></li>
-              <li class="nav-item"><%= link_to 'User Sign In', new_user_session_path %></li>
-        </div>
-      <% end %>
+    <div class="container-fluid">
+      <%= render 'layouts/header' %>
+      <div class="col-sm-12">
+        <%= yield %>
+      </div>
     </div>
-    <%= yield %>
   </body>
 </html>

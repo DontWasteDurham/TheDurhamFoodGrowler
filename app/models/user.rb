@@ -7,5 +7,8 @@ class User < ApplicationRecord
   has_many :transactions
   has_many :restaurants, through: :transactions
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
 end
