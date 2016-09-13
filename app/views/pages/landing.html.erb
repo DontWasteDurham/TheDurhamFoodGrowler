@@ -2,7 +2,6 @@
 <h2>A pilot program for sustainable food containers in Durham presented by Food
   FWD and Don’t Waste Durham,  2016</h2>
 
-  <body>
     <h3>Overview</h3>
       <p>Bull City Food Growlers is a reusable take-out container program that aims
          to reduce waste and cost for local restaurants and improve the quality of
@@ -30,15 +29,3 @@
           <li>We have special corporate programs</li>
         </ul>
       </p>
-
-  </body>
-
-<% if signed_in? %>
-  <div>
-    <p>Welcome back <% current_user.first_name %>!</p>
-  </div>
-<% else %>
-  <div> <%= link_to 'New User Sign Up', new_user_registration_path %> |
-        <%= link_to 'User Sign In', new_user_session_path %> 
-  </div>
-<% end %>
