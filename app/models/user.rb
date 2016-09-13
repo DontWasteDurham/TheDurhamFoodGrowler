@@ -1,10 +1,11 @@
 class User < ApplicationRecord
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_many :transactions
+  user has_many :restaurants, through: transactions
 
-  def full_name
-    "#{current_user.first_name} " "#{current_user.last_name}"
-  end
+
 end
