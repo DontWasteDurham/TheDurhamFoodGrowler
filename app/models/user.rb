@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def full_name
-    "#{current_user.first_name} " "#{current_user.last_name}"
+    "#{current_user.first_name}" + "#{current_user.last_name}"
   end
 end
