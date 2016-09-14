@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<div class="text-center">
+  <p>
+    <strong>User:</strong>
+    <%= @user.full_name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+
+  <p>
+    <strong>Maximum Number of Boxes:</strong>
+    <%= @user.purchased_boxes %>
+  </p>
+
+  <%= link_to 'Edit', edit_user_registration_path %> |
+  <%= link_to 'Back', root_path %>
+</div>
