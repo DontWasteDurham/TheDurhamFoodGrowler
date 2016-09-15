@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   get 'welcome' => 'pages#welcome'
   get 'landing' =>'pages#landing'
   resources :charges
+  resources :subscribers
   #Trying to get to a sign_out#
   #get 'users/sign_out' =>'devise/sessions#destroy'#
 
   devise_for :businesses
-  devise_for :users
+  devise_for :users, controllers: {registrations: "registrations"}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
