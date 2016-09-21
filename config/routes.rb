@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'subscriptions/new'
+
+  put 'subscriptions/update'
+
   resources :restaurants
   resources :transactions
   root 'pages#landing'
@@ -9,6 +13,6 @@ Rails.application.routes.draw do
   #get 'users/sign_out' =>'devise/sessions#destroy'#
   get 'user' => 'users#show'
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: "registrations"}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

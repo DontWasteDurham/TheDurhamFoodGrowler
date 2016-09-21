@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913152856) do
+ActiveRecord::Schema.define(version: 20160916172623) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.integer  "box_inventory", default: 0
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -52,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160913152856) do
     t.integer  "purchased_boxes",        default: 0
     t.integer  "box_status",             default: 0
     t.date     "exp_date"
+    t.string   "stripe_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

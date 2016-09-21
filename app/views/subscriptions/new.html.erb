@@ -1,0 +1,46 @@
+<% @plans.each do |plan| %>
+
+  <%= form_tag subscriptions_update_path, method: :put do %>
+  <h1><%= plan[:name] %></h1>
+  <%= hidden_field_tag :plan_id, plan[:id] %>
+
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description=<%= plan[:name] %>
+          data-amount=<%= plan[:amount] %>
+
+  </script>
+  <br />
+
+  <script>
+  var handler = StripeCheckout.configure({
+    key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+    locale: 'auto',
+    name: 'Sand Castles United',
+    description: 'One-time donation',
+    token: function(token) {
+      $('input#stripeToken').val(token.id);
+      $('form').submit();
+    }
+  });
+  </script>  <% end %>
+
+<% end %>
+<%= form_tag subscriptions_update_path do %>
+  <div id="error_explanation">
+    <% if flash[:error].present? %>
+      <p><%= flash[:error] %></p>
+    <% end %>
+  </div>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= number_to_currency(@amount * 1) %></span>
+    </label>
+  </article>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+  data-description="One-time donation"
+  data-amount="<%= @amount %>"
+  data-locale="auto"></script>
+<% end %>
