@@ -16,11 +16,11 @@ class SubscriptionsController < ApplicationController
         plan: plan_id,
         email: current_user.email
         )
-        
+
     current_user.stripe_id = customer.id
     current_user.purchased_boxes = @quantity
     current_user.save
 
-    redirect_to welcome_path
+    redirect_to transactions_path
   end
 end
