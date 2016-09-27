@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
   def new
     plans = Stripe::Plan.all
     @plans = plans[:data]
-    @amount = 100
+    @amount = plans[:data]
   end
 
   def update
@@ -21,6 +21,6 @@ class SubscriptionsController < ApplicationController
     current_user.purchased_boxes = @quantity
     current_user.save
 
-    redirect_to transactions_path
+    redirect_to new_transactions_path
   end
 end

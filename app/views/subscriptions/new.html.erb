@@ -1,7 +1,8 @@
 <% @plans.each do |plan| %>
 
   <%= form_tag subscriptions_update_path, method: :put do %>
-  <h1><%= plan[:name] %></h1>
+  <h2><%= plan[:name] %></h2>
+  <h3><%= plan[:amount] %></h3>
   <%= hidden_field_tag :plan_id, plan[:id] %>
 
 
