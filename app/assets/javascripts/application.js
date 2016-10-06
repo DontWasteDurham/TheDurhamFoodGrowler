@@ -12,7 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+$("input#box_number").on('click', function() {
+  var number_of_boxes = $("input#box_number").val();
+  var amount = $('input#amount').val();
+  number_of_boxes = number_of_boxes * 500;
+  amount = amount + number_of_boxes;
+  $("input#amount").val(amount);
+});

@@ -1,43 +1,19 @@
 <% @plans.each do |plan| %>
 
   <%= form_tag subscriptions_update_path, method: :put do %>
-  <h2><%= plan[:name] %></h2>
-  <h3><%= plan[:amount] %></h3>
-  <%= hidden_field_tag :plan_id, plan[:id] %>
+    <h2><%= plan[:name] %></h2>
+    <h3><%= number_to_currency(plan[:amount] / 100) %></h3>
+    <%= hidden_field_tag :plan_id, plan[:id] %>
 
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description=<%= plan[:name] %>
-          data-amount=<%= plan[:amount] %>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description=<%= plan[:name] %>
+            data-amount=<%= plan[:amount] %> * ($('input#box_number').val() * 5);
+            data-locale="auto"></script>
+    <br />
 
-  </script>
-  <br />
-
-  <script>
-  var handler = StripeCheckout.configure({
-    key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-    locale: 'auto',
-    name: 'Sand Castles United',
-    description: 'One-time donation',
-    token: function(token) {
-      $('input#stripeToken').val(token.id);
-      $('form').submit();
-    }
-  });
-  </script>  <% end %>
-
-<% end %>
-<%= form_tag subscriptions_update_path do %>
-  <div id="error_explanation">
-    <% if flash[:error].present? %>
-      <p><%= flash[:error] %></p>
-    <% end %>
-  </div>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= number_to_currency(@amount * 1) %></span>
-    </label>
-  </article>
+    <%= number_field_tag 'box_number', '1' %>
+ <% end %>
 
 <% end %>

@@ -11,7 +11,15 @@
  * It is generally better to create a new file per style scope.
  */
 @import "bootstrap";
-
+.header-image {
+  max-height: 50px;
+  margin: 0;
+  padding: 0;
+}
+.img-responsive {
+  display: inline-block;
+  height: auto;
+}
 .south-of-header {
   padding-top: 70px;
 }
@@ -21,6 +29,7 @@
 #mobileshow {
   @include sr-only;
 }
+
 .text-center {
   text-align: center;
 }
