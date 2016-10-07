@@ -10,15 +10,13 @@
 
   <body>
     <div class="container-fluid">
-      <div class="col-sm-12">
-        <div class="text-center">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-        </div>
-        <%= render 'layouts/header' %>
-        <div class="south-of-header">
-          <%= yield %>
-        </div>
+      <div class="text-center">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+      <%= render 'layouts/header' %>
+      <div class="south-of-header">
+        <%= yield %>
       </div>
     </div>
   </body>

@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 20160916172623) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.integer  "user_id"
