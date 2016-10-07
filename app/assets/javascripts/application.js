@@ -10,15 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery2
 //= require jquery_ujs
-//= require turbolinks
-//= require bootstrap-sprockets
 //= require_tree .
-$("input#box_number").on('click', function() {
-  var number_of_boxes = $("input#box_number").val();
-  var amount = $('input#amount').val();
-  number_of_boxes = number_of_boxes * 500;
-  amount = amount + number_of_boxes;
-  $("input#amount").val(amount);
+//= require tether
+//= require bootstrap
+//= require cable
+//= require turbolinks
+jQuery(document).on('turbolinks:load', function() {
+  $('input#box_number').on("change paste keyup", function() {
+    $('h3#plan-amount').text(function() {
+      plan_amount = '$' + (($('input#box_number').val() * 5) + 20) + '.00';
+      return plan_amount;
+    });
+  });
 });

@@ -9,18 +9,20 @@ class SubscriptionsController < ApplicationController
 
   def update
     plan_id = params[:plan_id]
-    @quantity = params[:quantity]
+    @quantity = 20 + (params[:box_number].to_i * 5)
     token = params[:stripeToken]
     customer = Stripe::Customer.create(
         card: token,
         plan: plan_id,
-        email: current_user.email
+        email: current_user.email,
+        quantity: @quantity
         )
 
     current_user.stripe_id = customer.id
-    current_user.purchased_boxes = @quantity
+    current_user.purchased_boxes = params[:box_number].to_i
+    current_user.exp_date = Date.today + 1.year
     current_user.save
 
-    redirect_to new_transactions_path
+    redirect_to new_transaction_path
   end
 end
