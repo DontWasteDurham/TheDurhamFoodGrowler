@@ -25,4 +25,15 @@ class SubscriptionsController < ApplicationController
 
     redirect_to new_transaction_path
   end
+
+  def delete
+  	customer = Stripe::Customer.retrieve(current_user.stripe_id)
+  	subscription_id = customer["subscriptions"]["data"][0]["id"]
+  	subscription = Stripe::Subscription.retrieve(subscription_id)
+  	subscription.delete
+
+    redirect_to new_transaction_path
+  end
+
+
 end

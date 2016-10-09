@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   get 'subscriptions/new'
-
   put 'subscriptions/update'
+  delete 'subscriptions/delete'
 
   resources :restaurants
   resources :transactions
