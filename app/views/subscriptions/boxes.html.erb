@@ -1,0 +1,10 @@
+<h3>Current number of boxes: <%= @current_user.purchased_boxes %> </h3>
+
+<%= form_tag subscriptions_add_boxes_path, method: :put do %>
+
+<h3 id="charge-amount"><%= number_to_currency(5) %></h3>
+<%= number_field_tag 'add_box_number', '1' %>
+
+
+<%= submit_tag 'Add Boxes', class: "btn btn-success" %>
+<% end %>

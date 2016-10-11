@@ -26,12 +26,38 @@ class SubscriptionsController < ApplicationController
     redirect_to new_transaction_path
   end
 
+  def boxes
+    @current_user = current_user
+  end
+
+  def add_boxes
+    customer = Stripe::Customer.retrieve(current_user.stripe_id)
+    @quantity = params[:add_box_number].to_i
+    @amount = @quantity * 500
+
+    charge = Stripe::Charge.create(
+      amount: @amount,
+      currency: "usd",
+      customer: current_user.stripe_id
+    )
+
+    subscription_id = customer.subscriptions[:data][0][:id]
+    subscription = Stripe::Subscription.retrieve(subscription_id)
+    subscription.quantity += (@quantity * 5)
+    subscription.save
+    current_user.purchased_boxes += @quantity
+    current_user.save
+
+    redirect_to new_transaction_path
+  end
+
   def delete
   	customer = Stripe::Customer.retrieve(current_user.stripe_id)
   	subscription_id = customer["subscriptions"]["data"][0]["id"]
   	subscription = Stripe::Subscription.retrieve(subscription_id)
   	subscription.delete
 
+    flash[:notice] = "Subscription successfully cancelled, use until expiration date!"
     redirect_to new_transaction_path
   end
 

@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'subscriptions/new'
   put 'subscriptions/update'
   delete 'subscriptions/delete'
+  get 'subscriptions/boxes'
+  put 'subscriptions/add_boxes'
+
 
   resources :restaurants
   resources :transactions

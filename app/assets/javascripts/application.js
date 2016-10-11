@@ -24,4 +24,10 @@ jQuery(document).on('turbolinks:load', function() {
       return plan_amount;
     });
   });
+  $('input#add_box_number').on("change paste keyup", function() {
+    $('h3#charge-amount').text(function() {
+      charge_amount = '$' + ($('input#add_box_number').val() * 5) + '.00';
+      return charge_amount;
+    });
+  });
 });

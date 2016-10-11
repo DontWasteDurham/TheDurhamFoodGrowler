@@ -40,9 +40,10 @@
       <%= f.submit "Update" %>
     </div><br />
   <% end %>
-  
-  <p><%= button_to "Cancel my GreenBox subscription", subscriptions_delete_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-  <p><%= button_to "Cancel my GreenBox account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+  <p><%= button_to "Add Boxes to my GreenBox subscription", subscriptions_boxes_path(resource_name), class: "btn btn-success", method: :get %></p>
+  <p><%= button_to "Cancel my GreenBox subscription", subscriptions_delete_path(resource_name), class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p><%= button_to "Cancel my GreenBox account", registration_path(resource_name),class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %></p>
 
   <%= link_to "Back", :back %> |
   <%= link_to "Home", user_path %>
