@@ -3,15 +3,68 @@
     <%= image_tag 'banner2.jpg', class: "banner img-fluid col-sm-12" %>
   <h1>Durham Green Box</h1>
   <h3>Reusable take-out containers in Durham</h2>
-  <p></p>
-  <h3>How It Works</h3>
-      <p>Alert participating food establishment that you are a Green Box member</p>
-      <p>Scan code at pick up</p>
-      <p>Take food home</p>
-      <p>Scan code when you return container at any participating restaurant</p>
-  <h3>How to Participate</h3>
-      <p>Become a member by joining annually at $25 per year</p>
-      <p>Renews automatically</p>
-      <p>We have special corporate programs</p>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#howitworks">
+                How GreenBox Works
+              </button>
+
+              <div class="modal fade" id="howitworks">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                        <h3>How GreenBox Works</h3>
+                      </div>
+                      <div class="modal-body">
+                        <p>Alert participating food establishment that you are a Green Box member</p>
+                        <p>Scan code at pick up</p>
+                        <p>Take food home</p>
+                        <p>Scan code when you return container at any participating restaurant</p>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <p></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#howtoparticipate">
+                How To Participate
+              </button>
+
+              <div class="modal fade" id="howtoparticipate">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                        <h3>How GreenBox Works</h3>
+                      </div>
+                      <div class="modal-body">
+                        <p>Become a member by joining annually at $25 per year for 1 box at a time</p>
+                        <p>Add additional boxes for $5 each</p>
+                        <p>Renews automatically</p>
+                        <p>We have special corporate programs</p>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+</body>
   <%= button_to "Sign Up", new_user_registration_path, :method => "get", class: "btn btn-success" %>
 </div>
