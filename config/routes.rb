@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root 'pages#landing'
   get 'welcome' => 'pages#welcome'
   get 'landing' =>'pages#landing'
+  get 'whygreenbox' => 'pages#whygreenbox'
   #Trying to get to a sign_out#
   #get 'users/sign_out' =>'devise/sessions#destroy'#
   get 'user' => 'users#show'
