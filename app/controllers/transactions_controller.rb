@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /transactions
   # GET /transactions.json
@@ -25,8 +26,15 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
-    @transaction.user_id = current_user.id
+   @transaction = Transaction.new(transaction_params)
+   @transaction.user_id = current_user.id
+   if (current_user.purchased_boxes - current_user.box_status) <= @transaction.number_of_boxes && @transaction.taken=true
+     current_user.box_status += @transaction.number_of_boxes
+     current_user.save
+   elsif (current_user.purchased_boxes - current_user.box_status) <= @transaction.number_of_boxes && @transaction.returned=true
+       current_user.box_status -= @transaction.number_of_boxes
+       current_user.save
+   end
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
@@ -72,4 +80,5 @@ class TransactionsController < ApplicationController
     def transaction_params
       params.require(:transaction).permit(:restaurant_id, :user_id, :number_of_boxes, :returned, :taken)
     end
+
 end
