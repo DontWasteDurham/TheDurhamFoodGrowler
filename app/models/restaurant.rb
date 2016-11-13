@@ -1,6 +1,4 @@
 class Restaurant < ApplicationRecord
-
   has_many :transactions
-  belongs_to :user
-  
+  belongs_to :owner, class_name: "User"
 end
