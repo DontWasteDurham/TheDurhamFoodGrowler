@@ -4,68 +4,74 @@
   <h1>Durham GreenBox</h1>
   <h3>Reusable take-out containers in Durham</h2>
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-13">
+  <body>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-13">
 
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#howitworks">
-                How GreenBox Works
-              </button>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#howitworks">
+                  How GreenBox Works
+                </button>
 
-              <div class="modal fade" id="howitworks">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                        <h3>How GreenBox Works</h3>
-                      </div>
-                      <div class="modal-body">
-                        <p>Alert participating food establishment that you are a GreensBox member</p>
-                        <p>Scan code at pick up</p>
-                        <p>Take food home</p>
-                        <p>Scan code when you return container at any participating restaurant</p>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      </div>
+                <div class="modal fade" id="howitworks">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <h3>How GreenBox Works</h3>
+                        </div>
+                        <div class="modal-body">
+                          <p>Alert participating food establishment that you are a GreensBox member</p>
+                          <p>Scan code at pick up</p>
+                          <p>Take food home</p>
+                          <p>Scan code when you return container at any participating restaurant</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-        </div>
-    </div>
-    <p></p>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-13">
+          </div>
+      </div>
+      <p></p>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-13">
 
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#howtoparticipate">
-                How To Participate
-              </button>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#howtoparticipate">
+                  How To Participate
+                </button>
 
-              <div class="modal fade" id="howtoparticipate">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                        <h3>How To Participate</h3>
-                      </div>
-                      <div class="modal-body">
-                        <p>Become a member by joining annually at $25 per year for 1 box at a time</p>
-                        <p>Add additional boxes for $5 each</p>
-                        <p>Renews automatically</p>
-                        <p>We have special corporate programs</p>
-                      </div>
-                        <p></p>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      </div>
+                <div class="modal fade" id="howtoparticipate">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <h3>How To Participate</h3>
+                        </div>
+                        <div class="modal-body">
+                          <p>Become a member by joining annually at $25 per year for 1 box at a time</p>
+                          <p>Add additional boxes for $5 each</p>
+                          <p>Renews automatically</p>
+                          <p>We have special corporate programs</p>
+                        </div>
+                          <p></p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-        </div>
-    </div>
+          </div>
+      </div>
 
-</body>
-  <%= button_to "Sign Up", new_user_registration_path, :method => "get", class: "btn btn-success" %>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-13">
+                  <%= button_to "Sign Up", new_user_registration_path, :method => "get", class: "btn btn-success" %>
+              </div>
+            </div>
+          </div>
+  </body>
 </div>
