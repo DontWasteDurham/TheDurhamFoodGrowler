@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_filter do
+    redirect_to root_path unless current_user
+  end
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
   # GET /users
   # GET /users.json
   def index
@@ -10,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @restaurants = current_user.restaurants if current_user.restaurant_owner
   end
 
   # GET /users/new
@@ -64,9 +68,13 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      if current_user.admin
+        @user = User.find(params[:id]) if params[:id]
+        @user = User.find(params[:format]) if params[:format]
+      elsif current_user
+        @user = current_user
+      end
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :restaurant_owner, :box_status, :stripe_id, :exp_date, :admin, :purchased_boxes)

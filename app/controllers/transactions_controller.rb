@@ -28,10 +28,10 @@ class TransactionsController < ApplicationController
   def create
    @transaction = Transaction.new(transaction_params)
    @transaction.user_id = current_user.id
-   if (current_user.purchased_boxes - current_user.box_status) <= @transaction.number_of_boxes && @transaction.taken=true
+   if (current_user.purchased_boxes - current_user.box_status) <= @transaction.number_of_boxes && @transaction.taken 
      current_user.box_status += @transaction.number_of_boxes
      current_user.save
-   elsif (current_user.purchased_boxes - current_user.box_status) <= @transaction.number_of_boxes && @transaction.returned=true
+   elsif (current_user.purchased_boxes - current_user.box_status) <= @transaction.number_of_boxes && @transaction.returned
        current_user.box_status -= @transaction.number_of_boxes
        current_user.save
    end
