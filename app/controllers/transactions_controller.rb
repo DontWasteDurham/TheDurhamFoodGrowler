@@ -28,13 +28,13 @@ class TransactionsController < ApplicationController
   def create
    @transaction = Transaction.new(transaction_params)
    @transaction.user_id = current_user.id
-   if (current_user.purchased_boxes - current_user.box_status) <= @transaction.number_of_boxes && @transaction.taken 
-     current_user.box_status += @transaction.number_of_boxes
-     current_user.save
-   elsif (current_user.purchased_boxes - current_user.box_status) <= @transaction.number_of_boxes && @transaction.returned
-       current_user.box_status -= @transaction.number_of_boxes
-       current_user.save
-   end
+   number_of_boxes = @transaction.number_of_boxes
+    if @transaction.taken && current_user.has_enough_boxes?(number_of_boxes)
+      current_user.add_to_box_status(number_of_boxes)
+    elsif @transaction.returned && current_user.can_return?(number_of_boxes)
+      current_user.subtract_from_box_status(number_of_boxes)
+    end
+
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }

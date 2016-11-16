@@ -9,4 +9,22 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def subtract_from_box_status(number_of_boxes)
+    self.box_status -= number_of_boxes
+    save!
+  end
+
+  def add_to_box_status(number_of_boxes)
+    self.box_status += number_of_boxes
+    save!
+  end
+
+  def has_enough_boxes?(number_of_boxes)
+    true if (purchased_boxes >= (box_status + number_of_boxes))
+  end
+
+  def can_return?(number_of_boxes)
+    true if (purchased_boxes >= (box_status - number_of_boxes))
+  end
 end
